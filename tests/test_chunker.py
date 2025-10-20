@@ -65,10 +65,10 @@ class TestChunkFixed:
 
     def test_content_preserved(self):
         """All tokens from original text must appear somewhere in the chunks."""
-        text = "apple banana cherry date elderberry"
+        text = "apple banana cherry date mango"
         chunks = chunk_fixed(text, chunk_size=5, overlap=0)
         combined = " ".join(chunks)
-        for word in ["apple", "banana", "cherry", "date", "elderberry"]:
+        for word in ["apple", "banana", "cherry", "date", "mango"]:
             assert word in combined
 
 
