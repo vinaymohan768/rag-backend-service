@@ -1,5 +1,5 @@
 """
-routers/documents.py — document ingestion and management
+routers/documents.py: document ingestion and management
 """
 
 import uuid

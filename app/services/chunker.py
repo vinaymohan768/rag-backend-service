@@ -3,14 +3,14 @@ services/chunker.py
 
 Three chunking strategies with different semantic preservation trade-offs:
 
-  fixed      — Naive token-count slicing. Fast, predictable size.
+  fixed     : Naive token-count slicing. Fast, predictable size.
                Best for: structured data, code, tables.
 
-  sentence   — Sentence-boundary aware (default). Packs sentences into
+  sentence  : Sentence-boundary aware (default). Packs sentences into
                token-bounded windows with overlap.
                Best for: general prose, documentation, articles.
 
-  paragraph  — Splits on double-newlines first, then sentences within
+  paragraph : Splits on double-newlines first, then sentences within
                oversized paragraphs. Preserves topic coherence best.
                Best for: long-form content with clear section structure.
 
@@ -145,5 +145,5 @@ def token_count(text: str) -> int:
 
 
 def tokenize_for_bm25(text: str) -> list[str]:
-    """Lowercase word tokens for BM25 index — strip punctuation."""
+    """Lowercase word tokens for BM25 index: strip punctuation."""
     return re.findall(r'\b[a-z0-9]+\b', text.lower())

@@ -1,5 +1,5 @@
 """
-routers/search.py — search and retrieval endpoints
+routers/search.py: search and retrieval endpoints
 """
 
 import logging

@@ -1,5 +1,5 @@
 """
-routers/collections.py — collection (namespace) management
+routers/collections.py: collection (namespace) management
 """
 
 import uuid

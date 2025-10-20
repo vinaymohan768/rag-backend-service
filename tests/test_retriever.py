@@ -4,9 +4,9 @@ tests/test_retriever.py
 Unit tests for Reciprocal Rank Fusion (RRF).
 
 RRF is the core fusion algorithm that merges vector and BM25 ranked lists.
-It is pure Python with no I/O — these tests run without a DB or OpenAI key.
+It is pure Python with no I/O: these tests run without a DB or OpenAI key.
 
-Reference: Cormack et al. 2009 — k=60 is the standard constant.
+Reference: Cormack et al. 2009: k=60 is the standard constant.
 """
 
 import pytest
@@ -46,16 +46,16 @@ class TestReciprocalRankFusion:
         assert by_id["shared"] > by_id.get("bm25_only", 0)
 
     def test_alpha_1_weights_vector_rank_only(self):
-        """alpha=1.0 — BM25 rank contributes nothing to the hybrid score."""
+        """alpha=1.0: BM25 rank contributes nothing to the hybrid score."""
         vec  = [_vec("a", 0.9), _vec("b", 0.5)]
         bm25 = [_bm25("b", 10.0)]  # b dominates BM25 but alpha=1 ignores it
         merged = reciprocal_rank_fusion(vec, bm25, alpha=1.0)
         by_id = {r["chunk_id"]: r["hybrid_score"] for r in merged}
-        # a ranked 1st in vector — with alpha=1 it must outscore b
+        # a ranked 1st in vector: with alpha=1 it must outscore b
         assert by_id["a"] > by_id["b"]
 
     def test_alpha_0_weights_bm25_rank_only(self):
-        """alpha=0.0 — vector rank contributes nothing to the hybrid score."""
+        """alpha=0.0: vector rank contributes nothing to the hybrid score."""
         vec  = [_vec("a", 0.9)]               # a dominates vector
         bm25 = [_bm25("b", 5.0), _bm25("a", 1.0)]  # b ranked 1st in BM25
         merged = reciprocal_rank_fusion(vec, bm25, alpha=0.0)

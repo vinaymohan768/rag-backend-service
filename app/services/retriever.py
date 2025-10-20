@@ -3,13 +3,13 @@ services/retriever.py
 
 Two-stage retrieval pipeline:
 
-  Stage 1 — Candidate retrieval
+  Stage 1: Candidate retrieval
     Vector search: cosine similarity via pgvector IVFFlat index
     BM25 search:   keyword overlap using stored token arrays (hybrid mode)
     Fusion:        Reciprocal Rank Fusion (RRF) to combine vector + BM25 scores
 
-  Stage 2 — Reranking
-    LLM scores each candidate 0–10 for relevance, blends with RRF score.
+  Stage 2: Reranking
+    LLM scores each candidate 0-10 for relevance, blends with RRF score.
     Falls back to hybrid order if the LLM call fails.
 """
 
@@ -73,7 +73,7 @@ def bm25_search(
 ) -> list[dict]:
     """
     Approximate BM25 using PostgreSQL GIN index on the tokens array.
-    Scores by overlap count (term frequency proxy) — fast and DB-native.
+    Scores by overlap count (term frequency proxy): fast and DB-native.
     For production, consider pg_search or a dedicated BM25 extension.
     """
     if not query_tokens:
@@ -153,7 +153,7 @@ def reciprocal_rank_fusion(
 
 def rerank(query: str, candidates: list[dict], top_k: int, client: OpenAI) -> list[dict]:
     """
-    Ask the LLM to score each candidate's relevance to the query (0–10).
+    Ask the LLM to score each candidate's relevance to the query (0-10).
     Falls back to hybrid score ordering if the LLM call fails or returns
     malformed output.
     """

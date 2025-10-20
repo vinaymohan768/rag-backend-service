@@ -2,7 +2,7 @@
 tests/test_chunker.py
 
 Unit tests for the three chunking strategies (fixed, sentence, paragraph)
-and the BM25 tokenizer. All logic is pure Python — no DB or OpenAI calls.
+and the BM25 tokenizer. All logic is pure Python: no DB or OpenAI calls.
 
 The chunker is the most correctness-critical component: bad chunk boundaries
 corrupt every downstream embedding and retrieval result.

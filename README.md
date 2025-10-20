@@ -10,7 +10,7 @@
 
 Production-grade RAG backend service with hybrid vector + BM25 search, multi-stage LLM reranking, and collection-based document namespacing. Built with FastAPI, pgvector, and OpenAI.
 
-**What makes this different from basic RAG:** hybrid search catches exact keyword matches that pure vector search misses, and LLM reranking re-scores top candidates for relevance before returning results — standard approach for reducing hallucinated outputs in enterprise knowledge retrieval.
+**What makes this different from basic RAG:** hybrid search catches exact keyword matches that pure vector search misses, and LLM reranking re-scores top candidates for relevance before returning results . This is the standard approach for reducing hallucinated outputs in enterprise knowledge retrieval.
 
 ---
 
@@ -22,9 +22,9 @@ Production-grade RAG backend service with hybrid vector + BM25 search, multi-sta
                     ┌──────▼──────┐
                     │  FastAPI    │  :8000
                     │             │
-                    │ /documents  │  — ingest, list, delete
-                    │ /search     │  — query with hybrid retrieval
-                    │ /collections│  — namespace management
+                    │ /documents  │  ingest, list, delete
+                    │ /search     │  query with hybrid retrieval
+                    │ /collections│  namespace management
                     └──────┬──────┘
                            │
           ┌────────────────┼────────────────┐
@@ -83,7 +83,7 @@ Final top-K results with full score breakdown
 ```
 
 **Why hybrid over pure vector?**
-Vector search excels at semantic similarity but misses exact matches — product codes, proper nouns, technical identifiers. BM25 catches these but misses paraphrases. Hybrid at alpha=0.7 consistently outperforms either alone on retrieval benchmarks (BEIR, MTEB).
+Vector search excels at semantic similarity but misses exact matches (product codes, proper nouns, technical identifiers). BM25 catches these but misses paraphrases. Hybrid at alpha=0.7 consistently outperforms either alone on retrieval benchmarks (BEIR, MTEB).
 
 ---
 

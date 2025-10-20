@@ -1,20 +1,20 @@
 """
-app/main.py — RAG Backend Service entry point
+app/main.py: RAG Backend Service entry point
 
 Endpoints:
-  POST   /documents                 — ingest a document
-  GET    /documents                 — list documents in a collection
-  GET    /documents/{id}            — get document details
-  DELETE /documents/{id}            — delete document + its chunks
+  POST   /documents                : ingest a document
+  GET    /documents                : list documents in a collection
+  GET    /documents/{id}           : get document details
+  DELETE /documents/{id}           : delete document + its chunks
 
-  POST   /search                    — hybrid or vector search with reranking
+  POST   /search                   : hybrid or vector search with reranking
 
-  POST   /collections               — create a collection (namespace)
-  GET    /collections               — list all collections
-  DELETE /collections/{name}        — delete a collection
+  POST   /collections              : create a collection (namespace)
+  GET    /collections              : list all collections
+  DELETE /collections/{name}       : delete a collection
 
-  GET    /health                    — liveness check
-  GET    /stats                     — ingestion and search stats
+  GET    /health                   : liveness check
+  GET    /stats                    : ingestion and search stats
 """
 
 import logging
