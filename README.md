@@ -1,5 +1,13 @@
 # rag-backend-service
 
+![CI](https://github.com/vinaymohan768/rag-backend-service/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.111-009688?logo=fastapi&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql&logoColor=white)
+![pgvector](https://img.shields.io/badge/pgvector-0.3-4169E1)
+![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?logo=openai&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
+
 Production-grade RAG backend service with hybrid vector + BM25 search, multi-stage LLM reranking, and collection-based document namespacing. Built with FastAPI, pgvector, and OpenAI.
 
 **What makes this different from basic RAG:** hybrid search catches exact keyword matches that pure vector search misses, and LLM reranking re-scores top candidates for relevance before returning results — standard approach for reducing hallucinated outputs in enterprise knowledge retrieval.

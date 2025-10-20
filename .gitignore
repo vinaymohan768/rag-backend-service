@@ -1,6 +1,32 @@
-.env
+# Python
 __pycache__/
-*.pyc
-.venv/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Environments
+.env
+.venv
+env/
 venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checkers / linters
+.mypy_cache/
+.ruff_cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
+Thumbs.db

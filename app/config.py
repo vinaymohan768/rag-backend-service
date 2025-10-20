@@ -29,8 +29,7 @@ class Settings(BaseSettings):
             f"password={self.postgres_password}"
         )
 
-    class Config:
-        env_file = ".env"
+    model_config = {"env_file": ".env"}
 
 
 settings = Settings()

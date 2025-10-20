@@ -9,15 +9,8 @@ Two-stage retrieval pipeline:
     Fusion:        Reciprocal Rank Fusion (RRF) to combine vector + BM25 scores
 
   Stage 2 — Reranking
-    LLM-based relevance scoring over top-K candidates.
-    Assigns a 0–10 score per chunk and re-sorts.
-    Falls back to hybrid score order if LLM call fails.
-
-Design rationale for hybrid search:
-  Pure vector search misses exact keyword matches (product codes, names, IDs).
-  Pure BM25 misses semantic matches (synonyms, paraphrases).
-  Hybrid search at alpha=0.7 gives strong semantic retrieval while preserving
-  keyword precision — standard production approach for enterprise RAG.
+    LLM scores each candidate 0–10 for relevance, blends with RRF score.
+    Falls back to hybrid order if the LLM call fails.
 """
 
 import json
