@@ -15,7 +15,7 @@ class SearchStrategy(str, Enum):
     hybrid = "hybrid"
 
 
-# ── Collections ───────────────────────────────────────────────────────────────
+#  Collections ───────────────────────────────────────────────────────────────
 
 class CollectionCreate(BaseModel):
     name: str = Field(..., min_length=1, max_length=100)
@@ -29,7 +29,7 @@ class CollectionResponse(BaseModel):
     created_at: datetime
 
 
-# ── Documents ─────────────────────────────────────────────────────────────────
+#  Documents ─────────────────────────────────────────────────────────────────
 
 class IngestRequest(BaseModel):
     title: str = Field(..., min_length=1, max_length=500)
@@ -64,7 +64,7 @@ class DocumentResponse(BaseModel):
     created_at: datetime
 
 
-# ── Search ────────────────────────────────────────────────────────────────────
+#  Search ────────────────────────────────────────────────────────────────────
 
 class SearchRequest(BaseModel):
     query: str = Field(..., min_length=1)
