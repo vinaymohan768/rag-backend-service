@@ -2,7 +2,7 @@
 
 Production-grade RAG backend service with hybrid vector + BM25 search, multi-stage LLM reranking, and collection-based document namespacing. Built with FastAPI, pgvector, and OpenAI.
 
-**What makes this different from basic RAG:** hybrid search catches exact keyword matches that pure vector search misses, and LLM reranking re-scores top candidates for relevance before returning results — standard approach for reducing hallucinated outputs in enterprise knowledge retrieval.
+**What makes this different from basic RAG:** hybrid search catches exact keyword matches that pure vector search misses, and LLM reranking re-scores top candidates for relevance before returning results  standard approach for reducing hallucinated outputs in enterprise knowledge retrieval.
 
 ---
 
@@ -49,17 +49,17 @@ Production-grade RAG backend service with hybrid vector + BM25 search, multi-sta
 ```
 Query
   │
-  ├─── OpenAI embedding (text-embedding-3-small)
+  ├    OpenAI embedding (text-embedding-3-small)
   │         │
   │    Vector search (cosine ANN via IVFFlat)
   │         │
-  │         ├── top-K vector candidates
+  │         ├   top-K vector candidates
   │
-  ├─── BM25 tokenization
+  ├    BM25 tokenization
   │         │
   │    Keyword search (GIN index on token arrays)
   │         │
-  │         ├── top-K BM25 candidates
+  │         ├   top-K BM25 candidates
   │
   ▼
 Reciprocal Rank Fusion (alpha=0.7)
@@ -165,26 +165,26 @@ curl -X POST http://localhost:8000/search \
 
 ```
 rag-backend-service/
-├── app/
-│   ├── main.py               # FastAPI app, /health, /stats
-│   ├── config.py             # Settings from env vars
-│   ├── database.py           # psycopg2 connection + helpers
-│   ├── routers/
-│   │   ├── documents.py      # Ingest + document CRUD
-│   │   ├── search.py         # Hybrid search endpoint
-│   │   └── collections.py    # Namespace management
-│   ├── services/
-│   │   ├── chunker.py        # Three chunking strategies
-│   │   ├── embeddings.py     # OpenAI batch embeddings
-│   │   └── retriever.py      # Vector search + BM25 + RRF + reranking
-│   └── models/
-│       └── schemas.py        # Pydantic request/response models
-├── db/
-│   └── init.sql              # Schema: IVFFlat + GIN indexes, search_log
-├── docker-compose.yml
-├── Dockerfile
-├── requirements.txt
-└── .env.example
+├   app/
+│   ├   main.py               # FastAPI app, /health, /stats
+│   ├   config.py             # Settings from env vars
+│   ├   database.py           # psycopg2 connection + helpers
+│   ├   routers/
+│   │   ├   documents.py      # Ingest + document CRUD
+│   │   ├   search.py         # Hybrid search endpoint
+│   │   └   collections.py    # Namespace management
+│   ├   services/
+│   │   ├   chunker.py        # Three chunking strategies
+│   │   ├   embeddings.py     # OpenAI batch embeddings
+│   │   └   retriever.py      # Vector search + BM25 + RRF + reranking
+│   └   models/
+│       └   schemas.py        # Pydantic request/response models
+├   db/
+│   └   init.sql              # Schema: IVFFlat + GIN indexes, search_log
+├   docker-compose.yml
+├   Dockerfile
+├   requirements.txt
+└   .env.example
 ```
 
 ---
