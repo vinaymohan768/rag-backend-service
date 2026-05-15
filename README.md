@@ -75,7 +75,7 @@ Final top-K results with full score breakdown
 ```
 
 **Why hybrid over pure vector?**
-Vector search excels at semantic similarity but misses exact matches — product codes, proper nouns, technical identifiers. BM25 catches these but misses paraphrases. Hybrid at alpha=0.7 consistently outperforms either alone on retrieval benchmarks (BEIR, MTEB).
+Vector search excels at semantic similarity but misses exact matches  product codes, proper nouns, technical identifiers. BM25 catches these but misses paraphrases. Hybrid at alpha=0.7 consistently outperforms either alone on retrieval benchmarks (BEIR, MTEB).
 
 ---
 
