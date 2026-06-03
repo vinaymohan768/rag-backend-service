@@ -1,11 +1,11 @@
--- init.sql — RAG backend service schema
+-- init.sql: RAG backend service schema
 
 CREATE EXTENSION IF NOT EXISTS vector;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- ── Collections ───────────────────────────────────────────────────────────────
 -- Namespaces for organizing documents. Each collection is independently
--- searchable — e.g., "product-docs", "support-kb", "legal-contracts"
+-- searchable: e.g., "product-docs", "support-kb", "legal-contracts"
 CREATE TABLE IF NOT EXISTS collections (
     id          UUID        PRIMARY KEY DEFAULT uuid_generate_v4(),
     name        TEXT        NOT NULL UNIQUE,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS chunks (
     created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- IVFFlat for ANN vector search — partition per collection via WHERE clause
+-- IVFFlat for ANN vector search: partition per collection via WHERE clause
 CREATE INDEX IF NOT EXISTS idx_chunks_embedding
     ON chunks USING ivfflat (embedding vector_cosine_ops)
     WITH (lists = 100);
